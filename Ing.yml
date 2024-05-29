@@ -1,9 +1,16 @@
 ---
-- name: Run Docker Compose
-  hosts: servers
+- name: Restart Docker Service
+  hosts: all
   become: yes
   tasks:
-    - name: Change to project directory
-      ansible.builtin.shell: cd /path/to/your/docker-compose/project && docker-compose up -d
+    - name: Restart Docker
+      service:
+        name: docker
+        state: restarted
+    
+    - name: run Docker
+      shell: docker compose up
       args:
-        chdir: /path/to/your/docker-compose/project
+        chdir: /home/ubuntu/easyTravel-Docker/
+      async: 10
+      poll: 0  
