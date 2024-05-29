@@ -13,4 +13,4 @@
       args:
         chdir: /home/ubuntu/easyTravel-Docker/
       async: 10
-      poll: 0  
+      poll: 0
